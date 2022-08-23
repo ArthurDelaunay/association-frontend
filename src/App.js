@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import Association from "./pages/Association"
+import Associations from "./pages/Associations"
+import Contact from "./pages/Contact"
+import Admin from "./pages/Admin"
+import Home from "./pages/Home"
+import NotFound from "./pages/NotFound"
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <BrowserRouter>
+      <header>
+        <nav>
+          <Link to="/">
+            <h2>Home</h2>
+          </Link>
+          <Link to="/associations">
+            <h2>Associations</h2>
+          </Link>
+          <Link to="/contact">
+            <h2>Contact</h2>
+          </Link>
+          <Link to="/admin">
+            <h2>Admin</h2>
+          </Link>
+        </nav>
       </header>
-    </div>
-  );
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/associations" element={<Associations />} />
+        <Route path="/associations/:slug" element={<Association />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
