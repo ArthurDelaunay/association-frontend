@@ -52,11 +52,13 @@ const Contact = () => {
           type="text"
           placeholder="Write your name here"
           onChange={handleNameChange}
+          required
         />
         <input
           type="text"
           placeholder="Write your message here"
           onChange={handleMessageChange}
+          required
         />
         <select name="filter" onChange={handleTargetedAssociationChange}>
           {associations.map((association) => {
